@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="windows-1252">
+	<title>Welcome HTML Class</title>
+	<!-- jQuery CDN -->
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+	<style type="text/css">
+		/*Float the form labels to the left and allow them 40% of the width of the form*/
+		label {
+			clear:both;
+			float: left;
+			width:40%;
+		}
+		/*Float the form inputs to the right and allow them 50% of the width of the form*/
+		input {
+			float: right;
+			width: 50%;
+		}
+		/*Allow the form to use 50% of the width of the page*/
+		form {
+			width:50%;
+		}
+	</style>
+</head>
+<body>
+	<!-- Output a simple webform to collect user data -->
+	<form method="post">
+		<label for"fname">First Name</label>
+		<input name="fname" type="text" size="20">
+		<label for="mname">Middle Name</label>
+		<input name="mname" type="text" size="20">
+		<label for="lname">Last Name</label>
+		<input name="lname" type="text" size="20">
+		<!-- When the user "submits" data, call the saveForm function and then call the debug function. Do not actually submit anything. -->
+		<button type="button" onclick="saveForm();debug();">Submit</button>
+	</form>
+
+	<script type="text/javascript">
+		// Create an array to hold the form contents inside
+		var myForm = [];
+
+		function saveForm(){
+			// Take each input's name and value and add it to the array we already created.
+			$('form input[type=text]').each(function(){
+				myForm.push({ name: this.name, value: this.value});
+			});
+		}
+
+		function debug(){
+			// Loop through our array and output the values.  These values should reflect what form inputs we have above and what their current values are.
+			for (var i = 0; i < myForm.length; i++) {
+				console.log(myForm[i].name+': '+myForm[i].value);
+			}
+		}
+	</script>
+</body>
+</html>
